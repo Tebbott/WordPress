@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'PT Serif', Georgia, Times, "Times New Roman", serif !default;
+$title-font-stack: 'Montserrat', Helvetica, Arial, sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+
+//Letter-spacing
+$lspacing: 1px !default;
+
+
+
+/// Simple animation
+/// @type String
+$transition: all 0.3s ease-in-out 0s !default;
+
+
+/// Copy text color
+/// @type Color
+$text-color: rgb(77, 78, 82) !default;
+
+/// Main brand color (RED)
+/// @type Color
+$brand-color: rgb(249, 29, 37) !default;
+$brand-color-hover: rgb(200, 17, 24) !default;
+
+/// Light grey
+/// @type Color
+$light-grey: rgb(247, 247, 247) !default;
+
+/// Medium grey
+/// @type Color
+$medium-grey: rgb(149, 158, 160) !default;
+
+/// Dark grey
+/// @type Color
+$dark-grey: rgb(77, 78, 82) !default;
+
+// Transparent Dark Grey
+//@type Color
+$trans-dark: rgba(0,0,0,0.4) !default;
+
+// White
+//@type Color
+$white: rgb(255,255,255) !default;
+
+
+/// Container's maximum width
+/// @type Length
+$max-width: 980px !default;
+
+
+
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;
+
+
+
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: 'http://localhost:3000/niavac/wp-content/themes/niavac/assets/images/dist' !default;

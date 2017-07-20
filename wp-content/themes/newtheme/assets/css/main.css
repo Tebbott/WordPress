@@ -67,7 +67,6 @@ figure {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   /* 1 */
   height: 0;
@@ -114,7 +113,6 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   /* 2 */ }
 
@@ -292,7 +290,6 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   color: inherit;
@@ -328,7 +325,6 @@ textarea {
  */
 [type="checkbox"],
 [type="radio"] {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -410,8 +406,8 @@ template {
  * Set up a decent box model on the root element
  */
 html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: pink; }
 
 /**
  * Make all elements from the DOM inherit from the parent box-sizing
@@ -422,7 +418,6 @@ html {
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
   box-sizing: inherit; }
 
 /**
@@ -431,7 +426,6 @@ html {
 a {
   color: #f91d25;
   text-decoration: none;
-  -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s; }
   a:hover, a:active, a:focus {
     color: #4d4e52;
@@ -706,7 +700,6 @@ h1, h2, h3, h4, h5, h6 {
   background-position: center center; }
 
 .animated {
-  -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s; }
 
 .dark-overlay {

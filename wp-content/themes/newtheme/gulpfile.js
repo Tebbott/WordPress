@@ -8,25 +8,15 @@ var gulp = require( 'gulp' ),
   uglify = require( 'gulp-uglify' ),
   rename = require( 'gulp-rename' ),
   notify = require( 'gulp-notify' ),
+  concat = require('gulp-concat'),
   include = require( 'gulp-include' ),
   sass = require( 'gulp-sass' ),
-  imageoptim = require('gulp-imageoptim'),
+  imagemin = require('gulp-imagemin'),
   browserSync = require('browser-sync').create(),
   critical = require('critical'),
+  fixmyjs = require("gulp-fixmyjs"),
   zip = require('gulp-zip');
 
-
-// automatically reloads the page when files changed
-var browserSyncWatchFiles = [
-    'assets/css/*.min.css',
-    'assets/js/**/*.js'
-];
-
-// see: https://www.browsersync.io/docs/options/
-var browserSyncOptions = {
-    watchTask: true,
-    proxy: "http://localhost/"
-}
  
 // Default error handler
 var onError = function( err ) {
@@ -45,7 +35,7 @@ gulp.task('zip', function () {
    'templates/*',
    '!node_modules',
   ], {base: "."})
-  .pipe(zip('buildfiles.zip'))
+  .pipe(zip('themefiles.zip'))
   .pipe(gulp.dest('.'));
 });
 
@@ -54,6 +44,7 @@ gulp.task('zip', function () {
 // Only checks javascript files inside /src directory
 gulp.task( 'jshint', function() {
   return gulp.src( 'assets/js/*.js' )
+    .pipe( fixmyjs() )
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) )
     .pipe( jshint.reporter( 'fail' ) );
@@ -64,21 +55,23 @@ gulp.task( 'jshint', function() {
     jsCustom = 'assets/js-custom/*.js',  
       jsDest = 'assets/js';
       
-  gulp.task('scripts', function() {  
+  gulp.task('scripts', ['jshint'], function() {  
       gulp.src(jsFiles)
           .pipe(concat('plugins.js'))
           .pipe(gulp.dest(jsDest))
           .pipe(rename('plugins.min.js'))
           .pipe(uglify())
           .pipe(gulp.dest(jsDest))
+          .pipe( notify({ message: 'scripts task complete' }));
   });
-  gulp.task('customscripts', function() {  
+  gulp.task('customscripts', ['jshint'], function() {  
     gulp.src(jsCustom)
           .pipe(concat('main.js'))
           .pipe(gulp.dest(jsDest))
           .pipe(rename('main.min.js'))
           .pipe(uglify())
           .pipe(gulp.dest(jsDest))
+          .pipe( notify({ message: 'customscripts task complete' }));
   });
 
 
@@ -125,32 +118,49 @@ gulp.task('sass-min', function() {
 // Optimize Images
 gulp.task('images', function() {
     return gulp.src('assets/images/src/*')
-        .pipe(imageoptim.optimize({jpegmini: true}))
+        .pipe(imagemin({
+            optimizationLevel: 7,
+            progressive: true
+        }))
         .pipe(gulp.dest('assets/images/dist'))
         .pipe( notify({ message: 'Images task complete' }));
 });
 
 // Generate & Inline Critical-path CSS
-gulp.task('critical', function (cb) {
-    critical.generate({
-        base: './',
-        src: 'http://sp:8888/',
-        dest: 'css/home.min.css',
-        ignore: ['@font-face'],
-        dimensions: [{
-          width: 320,
-          height: 480
-        },{
-          width: 768,
-          height: 1024
-        },{
-          width: 1280,
-          height: 960
-        }],
-        minify: true
-    });
-});
+// gulp.task('critical', function (cb) {
+//     critical.generate({
+//         base: './',
+//         src: 'http://sp:8888/',
+//         dest: 'css/home.min.css',
+//         ignore: ['@font-face'],
+//         dimensions: [{
+//           width: 320,
+//           height: 480
+//         },{
+//           width: 768,
+//           height: 1024
+//         },{
+//           width: 1280,
+//           height: 960
+//         }],
+//         minify: true
+//     });
+// });
 
+
+
+
+// automatically reloads the page when files changed
+var browserSyncWatchFiles = [
+    'assets/css/*.min.css',
+    'assets/js/**/*.js'
+];
+
+// see: https://www.browsersync.io/docs/options/
+var browserSyncOptions = {
+    watchTask: true,
+    proxy: "http://localhost/"
+}
 
 // Starts browser-sync task for starting the server.
 gulp.task('browser-sync', function() {
@@ -161,8 +171,8 @@ gulp.task('browser-sync', function() {
 // Start the livereload server and watch files for change
 gulp.task( 'watch', function() {
   // don't listen to whole js folder, it'll create an infinite loop
-  //gulp.watch( [ 'assets/js/**/*.js', '!./js/dist/*.js' ], [ 'scripts' ] )
-  gulp.watch( 'assets/sass/**/*.scss', ['sass', 'sass-min'] );
+  gulp.watch( [ 'assets/js-custom/*.js', 'assets/js-plugins/*.js','!assets/js/*.js' ], [ 'scripts', 'customscripts' ] )
+  gulp.watch( 'assets/sass/**/*.scss', ['sass', 'sass-min', 'browser-sync'] );
   gulp.watch( 'assets/images/**/*', ['images']);
   //gulp.watch( './**/*.php' ).on('change', browserSync.reload);
 } );

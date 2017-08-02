@@ -30,6 +30,7 @@
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
  
+<script src="<?php bloginfo('template_directory'); ?>/assets/js-plugins/modernizr-3.0.js"></script>
  
 <?php if ( is_singular() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );
@@ -39,13 +40,13 @@
 </head>
  
 <body <?php body_class(); ?>>
-
-	<header id="site-header" class="animated cf">
-
-		<a class="logo left" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-			<img src="<?php bloginfo('template_directory'); ?>/assets/images/dist/" alt="" />
+ 
+	<header id="site-header">
+		
+		<a class="logo" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<img src="<?php bloginfo('template_directory'); ?>/assets/images/logo.jpg" alt="" />
 		</a>
-
+			
 		<?php wp_nav_menu( array( 'container' => 'nav', 'fallback_cb' => 'starkers_menu', 'theme_location' => 'primary' ) ); ?>  
 		      
 	</header>

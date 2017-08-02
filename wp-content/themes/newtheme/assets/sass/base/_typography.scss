@@ -1,20 +1,7 @@
 /**
  * Basic typography style for copy text
  */
- 
 body {
   color: $text-color;
   font: normal 125% / 1.4 $text-font-stack;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-family: $title-font-stack;
-}
-
-/* Additional styles */
-.label {
-	font-size: 12px;
-	font-family: $text-font-stack;
-	font-style: italic;
-	color: $medium-grey;
-	display: block;
 }

@@ -9,6 +9,10 @@
 
 get_header(); ?>
 
-<?php get_template_part( 'loop', 'page' ); ?>
+<div class="wrapper">
+
+	<?php get_template_part( 'loop', 'page' ); ?>
+
+</div>
 
 <?php get_footer(); ?>

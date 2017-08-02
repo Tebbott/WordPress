@@ -7,7 +7,6 @@
  */
 html {
   box-sizing: border-box;
-  background-color: pink;
 }
 
 /**
@@ -28,7 +27,6 @@ html {
 a {
   color: $brand-color;
   text-decoration: none;
-  transition: all 0.3s ease-in-out 0s;
 
   @include on-event {
     color: $text-color;

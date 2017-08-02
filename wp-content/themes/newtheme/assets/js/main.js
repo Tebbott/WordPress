@@ -6,15 +6,17 @@
 		Custom Events
 		========================================================================== */
 		//Add mobile navigation
-		$( "#menu-toggle-1" ).on('click', function() {
+		$( "#mobile-nav-toggle" ).on('click', function() {
 			$( "#allcontent, #side-navigation" ).toggleClass( "selected" );
 			$( "#mobile-nav-toggle" ).toggleClass( "fa-navicon" );
 			$( "#mobile-nav-toggle" ).toggleClass( "fa-times" );	 	
 	  	});	
 
+		
+		
 	/*  ==========================================================================
 		jQuery Plugins
-		========================================================================== */
+		========================================================================== */		
 
 	});
 		
@@ -22,12 +24,12 @@
 		
 		//Custom height of home slider
 		var viewportHeight = $(window).height();				
-		jQuery( ".bh" ).css( "height", viewportHeight);
+		jQuery( "#home-slider .slides li" ).css( "height", viewportHeight);
 		
 		
 		jQuery(window).resize(function(){
 			var viewportHeight = $(window).height();			
-			jQuery( ".bh" ).css( "height", viewportHeight);
+			jQuery( "#home-slider .slides li" ).css( "height", viewportHeight);
 			
 		});
 		

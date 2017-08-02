@@ -3,59 +3,48 @@
 // -----------------------------------------------------------------------------
 
 
+
+
+
 /// Regular font family
 /// @type List
-$text-font-stack: 'PT Serif', Georgia, Times, "Times New Roman", serif !default;
-$title-font-stack: 'Montserrat', Helvetica, Arial, sans-serif !default;
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 
 
-//Letter-spacing
-$lspacing: 1px !default;
 
-
-
-/// Simple animation
-/// @type String
-$transition: all 0.3s ease-in-out 0s !default;
 
 
 /// Copy text color
 /// @type Color
-$text-color: rgb(77, 78, 82) !default;
+$text-color: rgb(34, 34, 34) !default;
 
-/// Main brand color (RED)
+/// Main brand color
 /// @type Color
-$brand-color: rgb(249, 29, 37) !default;
-$brand-color-hover: rgb(200, 17, 24) !default;
+$brand-color: rgb(229, 0, 80) !default;
 
 /// Light grey
 /// @type Color
-$light-grey: rgb(247, 247, 247) !default;
+$light-grey: rgb(237, 237, 237) !default;
 
 /// Medium grey
 /// @type Color
-$medium-grey: rgb(149, 158, 160) !default;
+$mid-grey: rgb(153, 153, 153) !default;
 
 /// Dark grey
 /// @type Color
-$dark-grey: rgb(77, 78, 82) !default;
+$dark-grey: rgb(68, 68, 68) !default;
 
-// Transparent Dark Grey
-//@type Color
-$trans-dark: rgba(0,0,0,0.4) !default;
 
-// White
-//@type Color
-$white: rgb(255,255,255) !default;
+
 
 
 /// Container's maximum width
 /// @type Length
-$max-width: 980px !default;
+$max-width: 1180px !default;
 
 
 
@@ -79,4 +68,4 @@ $breakpoints: (
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: 'http://localhost:3000/niavac/wp-content/themes/niavac/assets/images/dist' !default;
+$base-url: '/assets/' !default;
